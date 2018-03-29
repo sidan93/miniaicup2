@@ -2,16 +2,17 @@ from collections import namedtuple
 from objects.food import Food
 
 
-World = namedtuple('World', 'width height food_mass')
+World = namedtuple('World', 'data width height food_mass')
 
 
-def get_world_info(world):
+def get_world_info(world) -> World:
     world = World(
+        world,
         world.get('GAME_WIDTH'),
         world.get('GAME_HEIGHT'),
         world.get('FOOD_MASS')
     )
 
-    Food.food = world.food_mass
+    Food.mass = world.food_mass
 
     return world
