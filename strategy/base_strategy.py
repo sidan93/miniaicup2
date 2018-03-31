@@ -8,10 +8,7 @@ class BaseStrategy:
     def __init__(self, world):
         self.world = world
         self.me = Me(1)
-        self.opp2 = Opponent(2)
-        self.opp3 = Opponent(3)
-        self.opp4 = Opponent(4)
-        self.opps = [self.opp2, self.opp3, self.opp4]
+        self.opps = {}
         self.tick = 0
 
     def run(self):
@@ -31,9 +28,11 @@ class BaseStrategy:
     def set_pl(self, t: Tick):
         self.me.update(t.me)
 
-        self.opp2.update(t.opponents.get('2'))
-        self.opp3.update(t.opponents.get('3'))
-        self.opp4.update(t.opponents.get('4'))
+        self.opps = {}
+        for key, item in t.opponents.items():
+            opp = Opponent(key)
+            opp.update(item)
+            self.opps[key] = opp
 
     def on_tick(self, t: Tick):
         raise NotImplementedError()

@@ -22,6 +22,9 @@ class Part:
         self.mass = part.mass
         self.speed = part.speed
 
+    def __str__(self):
+        return 'id: {}; pos: {}; radius: {}; mass: {}; speed: {}'.format(self.id, self.pos, self.radius, self.mass, self.speed)
+
 
 class Player:
     def __init__(self, id_: int):
@@ -49,6 +52,9 @@ class Player:
             spl = data.split('.')
             return spl[0], spl[1]
         return data, '0'
+
+    def __str__(self):
+        return 'id: {}. parts: {}'.format(self.id, self.parts)
 
 
 class Me(Player):
@@ -79,6 +85,7 @@ class Me(Player):
                 self.last_target = (Point(center_x + random.uniform(-1, 1) * center_x, center_y + random.uniform(-1, 1) * center_y), tick)
 
         return self.last_target[0]
+
 
 class Opponent(Player):
     pass
