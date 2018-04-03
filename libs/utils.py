@@ -33,7 +33,7 @@ class Message:
     def __str__(self):
         result = ''
         for key, value_list in self.data.items():
-            result += str(key) + ': ' + ', '.join(value_list) + '\n'
+            result += str(key) + ': ' + ', '.join(value_list) + '!!!'
         return result
 
 

@@ -22,12 +22,14 @@ class BaseStrategy:
             try:
                 tick = parse_tick(json.loads(input()))
                 self.set_players(tick)
+                self.message.clear()
                 cmd = self.on_tick(tick)
                 cmd['Debug'] = str(self.message)
-                if DEBUG_:
-                    debug(str(self.tick) + ': ' + str(self.message))
+                #if DEBUG_:
+                    #debug(str(self.tick) + ': ' + str(self.message))
                 self.tick += 1
-                print(json.dumps(cmd))
+                print(json.dumps(cmd, ensure_ascii=False))
+                #debug(json.dumps(cmd, ensure_ascii=False))
             except:
                 import traceback
                 msg = traceback.format_exc()
