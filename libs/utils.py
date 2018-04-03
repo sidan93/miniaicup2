@@ -5,8 +5,7 @@ __all__ = ['debug', 'r']
 
 
 def debug(message):
-    return
-    file = open('E:\github\miniaicup\log.txt', 'a')
+    file = open('D:\Project\miniaicup2\log.txt', 'a')
     file.write('\n' + str(message))
     file.close()
 

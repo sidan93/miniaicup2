@@ -13,7 +13,7 @@ def parse_tick(data: dict) -> Tick:
     me = data.get('Mine')
 
     food = []
-    virus = []
+    virus = {}
     opponents = {}
     for item in data.get('Objects'):
         type_ = item.get('T')
@@ -25,6 +25,7 @@ def parse_tick(data: dict) -> Tick:
             opponents.setdefault(id_, []).append(item)
 
         if type_ == 'V':
-            virus.append(Virus(item))
+            id_ = item.get('Id')
+            virus[id_] = Virus(item)
 
     return Tick(me, opponents, food, virus, None)

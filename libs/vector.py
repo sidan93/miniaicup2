@@ -1,6 +1,7 @@
 import math
 
 from libs.point import Point
+from libs.utils import debug
 
 
 __all__ = ['Vector', 'get_angle', 'in_angle']
@@ -10,9 +11,6 @@ class Vector(Point):
     @staticmethod
     def from_p(a: Point, b: Point):
         return Vector(b.x - a.x, b.y - a.y)
-
-    def __str__(self):
-        return '(x: {}, y:{}'.format(self.x, self.y)
 
     @staticmethod
     def up():

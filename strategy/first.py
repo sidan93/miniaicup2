@@ -21,8 +21,8 @@ class ETarget:
 
 
 class StrFirst(BaseStrategy):
-    def __init__(self, world):
-        super().__init__(world)
+    def __init__(self):
+        super().__init__()
 
         self.bad_food = {}
 
@@ -32,7 +32,7 @@ class StrFirst(BaseStrategy):
         food_list = []
 
         # То чего мы боимся
-        warn_all_list = t.virus
+        warn_all_list = list(t.virus.values())
 
         # Удали плохую еду, которая старая
         #for key, tick in self.bad_food:
@@ -43,7 +43,6 @@ class StrFirst(BaseStrategy):
         max_mass = self.me.mass / 1.2
         for opp in self.opps.values():
             for part in opp.parts.values():
-                debug(part)
                 if part.mass / 1.2 > self.me.mass:
                     warn_all_list.append(part)
 
