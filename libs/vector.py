@@ -24,11 +24,11 @@ class Vector(Point):
         return Vector(self.x / length, self.y / length)
 
 
-def get_angle(a: Vector, b: Vector):
+def get_angle(a: Vector, b: Vector, in_all: bool = True):
     sin = a.x * b.y - b.x * a.y
     cos = a.x * b.x + a.y * b.y
     angle = math.atan2(sin, cos) * (180 / math.pi)
-    if angle < 0:
+    if angle < 0 and in_all:
         angle = 180 - angle
     return angle
 

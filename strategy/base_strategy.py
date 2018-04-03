@@ -15,12 +15,17 @@ class BaseStrategy:
         self.opps = {}
         self.tick = 0
 
+        self.message = Message()
+
     def run(self):
         while True:
             try:
                 tick = parse_tick(json.loads(input()))
                 self.set_players(tick)
                 cmd = self.on_tick(tick)
+                cmd['Debug'] = str(self.message)
+                if DEBUG_:
+                    debug(str(self.tick) + ': ' + str(self.message))
                 self.tick += 1
                 print(json.dumps(cmd))
             except:
